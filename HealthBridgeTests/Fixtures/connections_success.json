@@ -1,0 +1,10 @@
+{
+  "status": 0,
+  "data": [
+    {
+      "patientId": "patient-uuid-001",
+      "firstName": "Vincent",
+      "lastName": "Stoessel"
+    }
+  ]
+}

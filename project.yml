@@ -1,0 +1,75 @@
+name: HealthBridge
+options:
+  bundleIdPrefix: com.xaymaca
+  deploymentTarget:
+    iOS: "17.0"
+  defaultConfig: Debug
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+  createIntermediateGroups: true
+  swift: "6.0"
+
+configs:
+  Debug: debug
+  Release: release
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1"        # iPhone only
+
+targets:
+  HealthBridge:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: HealthBridge
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.xaymaca.healthbridge
+        INFOPLIST_FILE: HealthBridge/Info.plist
+        SWIFT_VERSION: "6.0"
+        DEVELOPMENT_TEAM: ""           # Fill in with your Apple Developer Team ID
+        CODE_SIGN_STYLE: Automatic
+    entitlements:
+      path: HealthBridge/HealthBridge.entitlements
+    info:
+      path: HealthBridge/Info.plist
+      properties:
+        CFBundleDisplayName: HealthBridge
+        CFBundleName: HealthBridge
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        UILaunchStoryboardName: LaunchScreen
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIRequiresFullScreen: YES
+        NSHealthShareUsageDescription: "HealthBridge reads nothing from Apple Health."
+        NSHealthUpdateUsageDescription: "HealthBridge writes your Libre glucose readings to Apple Health."
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.xaymaca.healthbridge.sync
+        UIBackgroundModes:
+          - fetch
+          - processing
+    capabilities:
+      - type: healthKit
+
+  HealthBridgeTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: HealthBridgeTests
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.xaymaca.healthbridgetests
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: HealthBridge

@@ -1,0 +1,4 @@
+[
+  { "id": "libre2",     "name": "FreeStyle Libre 2",      "durationDays": 14 },
+  { "id": "libre3plus", "name": "FreeStyle Libre 3 Plus", "durationDays": 15 }
+]

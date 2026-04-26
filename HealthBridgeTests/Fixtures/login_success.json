@@ -1,0 +1,13 @@
+{
+  "status": 0,
+  "data": {
+    "authTicket": {
+      "token": "test-token-abc123",
+      "expires": 9999999999
+    },
+    "user": {
+      "firstName": "Vincent",
+      "lastName": "Stoessel"
+    }
+  }
+}

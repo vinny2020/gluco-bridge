@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A2102C2566B9ACA24D2238A /* sensors.json in Resources */ = {isa = PBXBuildFile; fileRef = E916216AC94BD68F2A79C89D /* sensors.json */; };
+		1AD7CF58FD0BF5241A99ED56 /* LibreLinkUpServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403DFDEDDF16303744CE3F8 /* LibreLinkUpServiceTests.swift */; };
+		228E29DE6C8A23BE864FCA6C /* login_success.json in Resources */ = {isa = PBXBuildFile; fileRef = ED7ED18AC59E21FB125F3359 /* login_success.json */; };
+		23B5B4F2DCC1991E8AA841EE /* connections_success.json in Resources */ = {isa = PBXBuildFile; fileRef = B90E3B637174369F34760D5D /* connections_success.json */; };
+		26B574BB9627C4992EC7A662 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCDC0BA1A4EFB932D51D354 /* MockURLSession.swift */; };
+		2A60A7C2EA1980D018386FF2 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F132968B3F0C4196C483AA3 /* SyncManager.swift */; };
+		3111FA0DAEFAECEE4567163F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5546A23E9DFADD805DF79951 /* HealthKitManager.swift */; };
+		3B326EF164E0FB3058392846 /* KeychainHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A76709134F3C02A2E37AB2 /* KeychainHelperTests.swift */; };
+		5C33617B168660C46359F719 /* SyncManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAB62C20F5F1C7B4B388030 /* SyncManagerTests.swift */; };
+		6A9B18B5CFFA19A913F8280F /* LibreLinkUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956E7453953DA080997C798F /* LibreLinkUpService.swift */; };
+		85A10A15BF485958153BA7D9 /* glucose_graph.json in Resources */ = {isa = PBXBuildFile; fileRef = A9ECE768509353D703FE8F0D /* glucose_graph.json */; };
+		85E078536462338108A36D87 /* LibreLinkUpModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582B0B27D5A20AE4FED5A53A /* LibreLinkUpModels.swift */; };
+		9983AD0D53CD238E62B0D622 /* LibreLinkUpModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A7C3671F5A2EA1BABC3BD /* LibreLinkUpModelsTests.swift */; };
+		9BDF446C96281FFC0DF8A950 /* HealthBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20CB6D9ECD8580A75AC516 /* HealthBridgeApp.swift */; };
+		CB49E37D536508A964A1D01C /* login_failure.json in Resources */ = {isa = PBXBuildFile; fileRef = 555F46E5F0E8AB71AB4A9503 /* login_failure.json */; };
+		D423D1A1EBC4CB7E58385CA2 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACCD1EDE3ED7538CEA8E2E /* KeychainHelper.swift */; };
+		DEA75FCE3A4C2352372D6299 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5162A8C0D97B941C91992F /* ConnectView.swift */; };
+		E0CAC0BC7BDC7FA62A9DAE45 /* SensorRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EA11280A120C67AB4B97A4 /* SensorRegistry.swift */; };
+		ED4C3F1ED23934AFD1EFB2FE /* BackgroundTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956766BCA14F9990F331D9F1 /* BackgroundTaskManager.swift */; };
+		EE04515BCDBCF32B114864ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9781EFD48B3B5D04A097F4 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1E683BB7AEFD63FE303DCB3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9BA3F44467F02A5CF2A3AD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76E497C4EA2FDA64EEB0C989;
+			remoteInfo = HealthBridge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02AC71CF4B748F47B17F6C14 /* HealthBridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthBridge.entitlements; sourceTree = "<group>"; };
+		0403DFDEDDF16303744CE3F8 /* LibreLinkUpServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreLinkUpServiceTests.swift; sourceTree = "<group>"; };
+		31A759280715F6FBBAB133C7 /* HealthBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CACCD1EDE3ED7538CEA8E2E /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		42C7967B77CD3CD676D07F8A /* HealthBridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F132968B3F0C4196C483AA3 /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
+		5546A23E9DFADD805DF79951 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		555F46E5F0E8AB71AB4A9503 /* login_failure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login_failure.json; sourceTree = "<group>"; };
+		582B0B27D5A20AE4FED5A53A /* LibreLinkUpModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreLinkUpModels.swift; sourceTree = "<group>"; };
+		5D5162A8C0D97B941C91992F /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		6BCDC0BA1A4EFB932D51D354 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		7CAB62C20F5F1C7B4B388030 /* SyncManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManagerTests.swift; sourceTree = "<group>"; };
+		91EA11280A120C67AB4B97A4 /* SensorRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorRegistry.swift; sourceTree = "<group>"; };
+		956766BCA14F9990F331D9F1 /* BackgroundTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTaskManager.swift; sourceTree = "<group>"; };
+		956E7453953DA080997C798F /* LibreLinkUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreLinkUpService.swift; sourceTree = "<group>"; };
+		A9ECE768509353D703FE8F0D /* glucose_graph.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = glucose_graph.json; sourceTree = "<group>"; };
+		AD20CB6D9ECD8580A75AC516 /* HealthBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBridgeApp.swift; sourceTree = "<group>"; };
+		B09A7C3671F5A2EA1BABC3BD /* LibreLinkUpModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreLinkUpModelsTests.swift; sourceTree = "<group>"; };
+		B90E3B637174369F34760D5D /* connections_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = connections_success.json; sourceTree = "<group>"; };
+		C3A76709134F3C02A2E37AB2 /* KeychainHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelperTests.swift; sourceTree = "<group>"; };
+		C906A15FBB198A03265ABBD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E916216AC94BD68F2A79C89D /* sensors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sensors.json; sourceTree = "<group>"; };
+		ED7ED18AC59E21FB125F3359 /* login_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login_success.json; sourceTree = "<group>"; };
+		FB9781EFD48B3B5D04A097F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		3A0FCDB3E203A720986930F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31A759280715F6FBBAB133C7 /* HealthBridge.app */,
+				42C7967B77CD3CD676D07F8A /* HealthBridgeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A58DD46E9B38FAD7DC0E462 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5546A23E9DFADD805DF79951 /* HealthKitManager.swift */,
+				3CACCD1EDE3ED7538CEA8E2E /* KeychainHelper.swift */,
+				582B0B27D5A20AE4FED5A53A /* LibreLinkUpModels.swift */,
+				956E7453953DA080997C798F /* LibreLinkUpService.swift */,
+				91EA11280A120C67AB4B97A4 /* SensorRegistry.swift */,
+				4F132968B3F0C4196C483AA3 /* SyncManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		69BA99135CF1D31BE6AC1DCB = {
+			isa = PBXGroup;
+			children = (
+				C37769715314274CEBE70E11 /* HealthBridge */,
+				96BF9DB9B913D339D25E5D79 /* HealthBridgeTests */,
+				3A0FCDB3E203A720986930F1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B4780125A266B312A6E3815 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D5162A8C0D97B941C91992F /* ConnectView.swift */,
+				FB9781EFD48B3B5D04A097F4 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93E0EEFD3079E9FF7F3E3303 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E916216AC94BD68F2A79C89D /* sensors.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		96BF9DB9B913D339D25E5D79 /* HealthBridgeTests */ = {
+			isa = PBXGroup;
+			children = (
+				C3A76709134F3C02A2E37AB2 /* KeychainHelperTests.swift */,
+				B09A7C3671F5A2EA1BABC3BD /* LibreLinkUpModelsTests.swift */,
+				0403DFDEDDF16303744CE3F8 /* LibreLinkUpServiceTests.swift */,
+				6BCDC0BA1A4EFB932D51D354 /* MockURLSession.swift */,
+				7CAB62C20F5F1C7B4B388030 /* SyncManagerTests.swift */,
+				DDF24909DAE11EDCD21F539A /* Fixtures */,
+			);
+			path = HealthBridgeTests;
+			sourceTree = "<group>";
+		};
+		B08A597936B2F0A563EB783D /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				956766BCA14F9990F331D9F1 /* BackgroundTaskManager.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		C37769715314274CEBE70E11 /* HealthBridge */ = {
+			isa = PBXGroup;
+			children = (
+				02AC71CF4B748F47B17F6C14 /* HealthBridge.entitlements */,
+				AD20CB6D9ECD8580A75AC516 /* HealthBridgeApp.swift */,
+				C906A15FBB198A03265ABBD0 /* Info.plist */,
+				B08A597936B2F0A563EB783D /* Background */,
+				4A58DD46E9B38FAD7DC0E462 /* Models */,
+				93E0EEFD3079E9FF7F3E3303 /* Resources */,
+				7B4780125A266B312A6E3815 /* Views */,
+			);
+			path = HealthBridge;
+			sourceTree = "<group>";
+		};
+		DDF24909DAE11EDCD21F539A /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				B90E3B637174369F34760D5D /* connections_success.json */,
+				A9ECE768509353D703FE8F0D /* glucose_graph.json */,
+				555F46E5F0E8AB71AB4A9503 /* login_failure.json */,
+				ED7ED18AC59E21FB125F3359 /* login_success.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5044423D0EAE25E9E9DCB1F9 /* HealthBridgeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DD80EA8C4C48EF1A202D869 /* Build configuration list for PBXNativeTarget "HealthBridgeTests" */;
+			buildPhases = (
+				76F73682FC3AAFE386B4A3E8 /* Sources */,
+				CF9597F0291E7D1EFC0CF533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05C64D15B3970B0D8E49FF70 /* PBXTargetDependency */,
+			);
+			name = HealthBridgeTests;
+			packageProductDependencies = (
+			);
+			productName = HealthBridgeTests;
+			productReference = 42C7967B77CD3CD676D07F8A /* HealthBridgeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		76E497C4EA2FDA64EEB0C989 /* HealthBridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25290398247119839496DC01 /* Build configuration list for PBXNativeTarget "HealthBridge" */;
+			buildPhases = (
+				427B31C56C5370FADC7D643A /* Sources */,
+				5A2F21B530061067C512B15C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HealthBridge;
+			packageProductDependencies = (
+			);
+			productName = HealthBridge;
+			productReference = 31A759280715F6FBBAB133C7 /* HealthBridge.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F9BA3F44467F02A5CF2A3AD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					76E497C4EA2FDA64EEB0C989 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1A18396240EBD065E0AB9C14 /* Build configuration list for PBXProject "HealthBridge" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 69BA99135CF1D31BE6AC1DCB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3A0FCDB3E203A720986930F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76E497C4EA2FDA64EEB0C989 /* HealthBridge */,
+				5044423D0EAE25E9E9DCB1F9 /* HealthBridgeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A2F21B530061067C512B15C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A2102C2566B9ACA24D2238A /* sensors.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF9597F0291E7D1EFC0CF533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23B5B4F2DCC1991E8AA841EE /* connections_success.json in Resources */,
+				85A10A15BF485958153BA7D9 /* glucose_graph.json in Resources */,
+				CB49E37D536508A964A1D01C /* login_failure.json in Resources */,
+				228E29DE6C8A23BE864FCA6C /* login_success.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		427B31C56C5370FADC7D643A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED4C3F1ED23934AFD1EFB2FE /* BackgroundTaskManager.swift in Sources */,
+				DEA75FCE3A4C2352372D6299 /* ConnectView.swift in Sources */,
+				EE04515BCDBCF32B114864ED /* ContentView.swift in Sources */,
+				9BDF446C96281FFC0DF8A950 /* HealthBridgeApp.swift in Sources */,
+				3111FA0DAEFAECEE4567163F /* HealthKitManager.swift in Sources */,
+				D423D1A1EBC4CB7E58385CA2 /* KeychainHelper.swift in Sources */,
+				85E078536462338108A36D87 /* LibreLinkUpModels.swift in Sources */,
+				6A9B18B5CFFA19A913F8280F /* LibreLinkUpService.swift in Sources */,
+				E0CAC0BC7BDC7FA62A9DAE45 /* SensorRegistry.swift in Sources */,
+				2A60A7C2EA1980D018386FF2 /* SyncManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76F73682FC3AAFE386B4A3E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B326EF164E0FB3058392846 /* KeychainHelperTests.swift in Sources */,
+				9983AD0D53CD238E62B0D622 /* LibreLinkUpModelsTests.swift in Sources */,
+				1AD7CF58FD0BF5241A99ED56 /* LibreLinkUpServiceTests.swift in Sources */,
+				26B574BB9627C4992EC7A662 /* MockURLSession.swift in Sources */,
+				5C33617B168660C46359F719 /* SyncManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05C64D15B3970B0D8E49FF70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76E497C4EA2FDA64EEB0C989 /* HealthBridge */;
+			targetProxy = F1E683BB7AEFD63FE303DCB3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3EB9E140F86D3A2E9420844F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HealthBridge/HealthBridge.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HealthBridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xaymaca.healthbridge;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62FA7A22D1F91DF0480B6CBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xaymaca.healthbridgetests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthBridge.app/HealthBridge";
+			};
+			name = Release;
+		};
+		64B0724F07ABAB5723B8BDF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xaymaca.healthbridgetests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HealthBridge.app/HealthBridge";
+			};
+			name = Debug;
+		};
+		96BBA24AA6715DCC2490BDBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A22UWTG6TN;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B88CE5F3499C10352CE29DCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A22UWTG6TN;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D583F3525192D26C4F953C61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HealthBridge/HealthBridge.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HealthBridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xaymaca.healthbridge;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A18396240EBD065E0AB9C14 /* Build configuration list for PBXProject "HealthBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96BBA24AA6715DCC2490BDBF /* Debug */,
+				B88CE5F3499C10352CE29DCB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		25290398247119839496DC01 /* Build configuration list for PBXNativeTarget "HealthBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EB9E140F86D3A2E9420844F /* Debug */,
+				D583F3525192D26C4F953C61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7DD80EA8C4C48EF1A202D869 /* Build configuration list for PBXNativeTarget "HealthBridgeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B0724F07ABAB5723B8BDF3 /* Debug */,
+				62FA7A22D1F91DF0480B6CBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F9BA3F44467F02A5CF2A3AD7 /* Project object */;
+}
