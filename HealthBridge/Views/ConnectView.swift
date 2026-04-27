@@ -1,6 +1,7 @@
 // Views/ConnectView.swift
 
 import SwiftUI
+import UIKit
 
 struct ConnectView: View {
     @EnvironmentObject private var syncManager: SyncManager
@@ -46,9 +47,22 @@ struct ConnectView: View {
 
                 if let error = errorMessage {
                     Section {
-                        Text(error)
-                            .foregroundStyle(.red)
-                            .font(.footnote)
+                        HStack(alignment: .top, spacing: 8) {
+                            Text(error)
+                                .foregroundStyle(.red)
+                                .font(.footnote)
+                                .textSelection(.enabled)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Button {
+                                UIPasteboard.general.string = error
+                            } label: {
+                                Image(systemName: "doc.on.doc")
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .buttonStyle(.borderless)
+                            .accessibilityLabel("Copy error message")
+                        }
                     }
                 }
 
@@ -71,10 +85,13 @@ struct ConnectView: View {
             .navigationTitle("HealthBridge")
         }
         .onAppear {
-            if selectedSensorId.isEmpty, let first = sensors.first {
-                selectedSensorId = first.id
-            } else if let saved = UserDefaults.standard.string(forKey: "selectedSensorId") {
+            // Restore the previously selected sensor if it's still in the registry,
+            // otherwise default to the first (newest) sensor in sensors.json.
+            if let saved = UserDefaults.standard.string(forKey: "selectedSensorId"),
+               sensors.contains(where: { $0.id == saved }) {
                 selectedSensorId = saved
+            } else if let first = sensors.first {
+                selectedSensorId = first.id
             }
         }
     }
@@ -94,6 +111,12 @@ struct ConnectView: View {
                 KeychainHelper.save(key: "llu.password", value: password)
                 KeychainHelper.save(key: "llu.authToken", value: ticket.token)
                 KeychainHelper.save(key: "llu.tokenExpires", value: String(ticket.expires))
+                if let region = await service.currentRegion {
+                    KeychainHelper.save(key: "llu.region", value: region)
+                }
+                if let accountId = await service.currentAccountId {
+                    KeychainHelper.save(key: "llu.accountId", value: accountId)
+                }
                 UserDefaults.standard.set(selectedSensorId, forKey: "selectedSensorId")
 
                 let patients = try await service.fetchConnections(token: ticket.token)
@@ -113,7 +136,12 @@ struct ConnectView: View {
 
             } catch {
                 errorMessage = error.localizedDescription
-                KeychainHelper.clearAll()
+                // Only fully reset credentials on a real auth rejection. For network or
+                // decoding errors the saved token is still likely valid, so keep it
+                // (and the typed email/password) so the user can retry without re-entry.
+                if case LLUError.unauthorized = error {
+                    KeychainHelper.clearAll()
+                }
             }
         }
     }

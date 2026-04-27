@@ -37,6 +37,8 @@ targets:
         CODE_SIGN_STYLE: Automatic
     entitlements:
       path: HealthBridge/HealthBridge.entitlements
+      properties:
+        com.apple.developer.healthkit: true
     info:
       path: HealthBridge/Info.plist
       properties:
@@ -44,6 +46,7 @@ targets:
         CFBundleName: HealthBridge
         CFBundleShortVersionString: "1.0"
         CFBundleVersion: "1"
+        ITSAppUsesNonExemptEncryption: NO
         UILaunchStoryboardName: LaunchScreen
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait

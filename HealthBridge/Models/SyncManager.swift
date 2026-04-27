@@ -14,7 +14,10 @@ class SyncManager: ObservableObject {
     private let healthKit: HealthKitManager
     private let totalSyncedKey = "healthbridge.totalSynced"
 
-    init(lluService: LibreLinkUpService = LibreLinkUpService(),
+    init(lluService: LibreLinkUpService = LibreLinkUpService(
+            region: KeychainHelper.load(key: "llu.region"),
+            accountId: KeychainHelper.load(key: "llu.accountId")
+         ),
          healthKit: HealthKitManager = HealthKitManager()) {
         self.lluService = lluService
         self.healthKit = healthKit
@@ -94,6 +97,12 @@ class SyncManager: ObservableObject {
         let ticket = try await lluService.login(email: email, password: password)
         KeychainHelper.save(key: "llu.authToken", value: ticket.token)
         KeychainHelper.save(key: "llu.tokenExpires", value: String(ticket.expires))
+        if let region = await lluService.currentRegion {
+            KeychainHelper.save(key: "llu.region", value: region)
+        }
+        if let accountId = await lluService.currentAccountId {
+            KeychainHelper.save(key: "llu.accountId", value: accountId)
+        }
         return ticket.token
     }
 

@@ -61,7 +61,9 @@ enum KeychainHelper {
             "llu.password",
             "llu.authToken",
             "llu.tokenExpires",
-            "llu.patientId"
+            "llu.patientId",
+            "llu.region",
+            "llu.accountId"
         ]
         keysToDelete.forEach { delete(key: $0) }
     }

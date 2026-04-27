@@ -38,11 +38,11 @@ struct LLUConnectionsResponse: Decodable {
 
 struct LLUPatient: Decodable {
     let patientId: String
-    let firstName: String
-    let lastName: String
+    let firstName: String?
+    let lastName: String?
 
     var displayName: String {
-        let full = "\(firstName) \(lastName)".trimmingCharacters(in: .whitespacesAndNewlines)
+        let full = "\(firstName ?? "") \(lastName ?? "")".trimmingCharacters(in: .whitespacesAndNewlines)
         return full.isEmpty ? patientId : full
     }
 }
@@ -134,6 +134,7 @@ enum LLUError: Error, LocalizedError, Equatable {
     case noData
     case decodingError(Error)
     case redirectRequired(String)
+    case apiError(status: Int?, snippet: String)
 
     static func == (lhs: LLUError, rhs: LLUError) -> Bool {
         switch (lhs, rhs) {
@@ -142,6 +143,7 @@ enum LLUError: Error, LocalizedError, Equatable {
         case (.networkError, .networkError):             return true
         case (.decodingError, .decodingError):           return true
         case (.redirectRequired(let a), .redirectRequired(let b)): return a == b
+        case (.apiError(let s1, _), .apiError(let s2, _)): return s1 == s2
         default:                                         return false
         }
     }
@@ -153,6 +155,9 @@ enum LLUError: Error, LocalizedError, Equatable {
         case .noData:                  return "No glucose data returned."
         case .decodingError(let e):    return "Decoding error: \(e.localizedDescription)"
         case .redirectRequired(let r): return "Region redirect required: \(r)"
+        case .apiError(let status, let snippet):
+            let s = status.map(String.init) ?? "?"
+            return "LLU server error (status=\(s)). Response: \(snippet)"
         }
     }
 }
