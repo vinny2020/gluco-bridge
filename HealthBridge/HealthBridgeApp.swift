@@ -9,6 +9,23 @@ struct HealthBridgeApp: App {
     @Environment(\.scenePhase) private var scenePhase
 
     init() {
+        #if DEBUG
+        // Simulator testing hook: seed fake credentials so ContentView and the
+        // sync triggers can be exercised without a real LLU account. Syncs will
+        // fail at the LLU API (fake token) — that's expected; this exists to
+        // verify the trigger layers fire, not to fetch data.
+        if ProcessInfo.processInfo.arguments.contains("-seedFakeAuth") {
+            KeychainHelper.save(key: "llu.email", value: "sim@example.com")
+            KeychainHelper.save(key: "llu.password", value: "not-a-real-password")
+            KeychainHelper.save(key: "llu.authToken", value: "sim-fake-token")
+            KeychainHelper.save(key: "llu.tokenExpires",
+                                value: String(Int(Date().timeIntervalSince1970) + 3600))
+            KeychainHelper.save(key: "llu.patientId", value: "sim-patient")
+            UserDefaults.standard.set("libre3plus", forKey: "selectedSensorId")
+            UserDefaults.standard.set("Simulator Test", forKey: "patientDisplayName")
+        }
+        #endif
+
         SensorRegistry.shared.load()
         BackgroundTaskManager.registerTasks()
         // Issue #1 Layer 1: nothing ever submitted the FIRST BGAppRefreshTask
