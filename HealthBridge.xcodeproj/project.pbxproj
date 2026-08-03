@@ -17,6 +17,7 @@
 		3B326EF164E0FB3058392846 /* KeychainHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A76709134F3C02A2E37AB2 /* KeychainHelperTests.swift */; };
 		5C33617B168660C46359F719 /* SyncManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAB62C20F5F1C7B4B388030 /* SyncManagerTests.swift */; };
 		6A9B18B5CFFA19A913F8280F /* LibreLinkUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956E7453953DA080997C798F /* LibreLinkUpService.swift */; };
+		837A2C530CD2B3044A50D376 /* SyncGlucoseIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6CB1F9251B19A42A1F67F /* SyncGlucoseIntent.swift */; };
 		85A10A15BF485958153BA7D9 /* glucose_graph.json in Resources */ = {isa = PBXBuildFile; fileRef = A9ECE768509353D703FE8F0D /* glucose_graph.json */; };
 		85E078536462338108A36D87 /* LibreLinkUpModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582B0B27D5A20AE4FED5A53A /* LibreLinkUpModels.swift */; };
 		9983AD0D53CD238E62B0D622 /* LibreLinkUpModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A7C3671F5A2EA1BABC3BD /* LibreLinkUpModelsTests.swift */; };
@@ -42,7 +43,7 @@
 /* Begin PBXFileReference section */
 		02AC71CF4B748F47B17F6C14 /* HealthBridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthBridge.entitlements; sourceTree = "<group>"; };
 		0403DFDEDDF16303744CE3F8 /* LibreLinkUpServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreLinkUpServiceTests.swift; sourceTree = "<group>"; };
-		31A759280715F6FBBAB133C7 /* HealthBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		31A759280715F6FBBAB133C7 /* HealthBridge.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HealthBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CACCD1EDE3ED7538CEA8E2E /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		42C7967B77CD3CD676D07F8A /* HealthBridgeTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HealthBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F132968B3F0C4196C483AA3 /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		C3A76709134F3C02A2E37AB2 /* KeychainHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelperTests.swift; sourceTree = "<group>"; };
 		C906A15FBB198A03265ABBD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E916216AC94BD68F2A79C89D /* sensors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sensors.json; sourceTree = "<group>"; };
+		EAB6CB1F9251B19A42A1F67F /* SyncGlucoseIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncGlucoseIntent.swift; sourceTree = "<group>"; };
 		ED7ED18AC59E21FB125F3359 /* login_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login_success.json; sourceTree = "<group>"; };
 		FB9781EFD48B3B5D04A097F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		85C7EE1534EE7263D091AC2D /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				EAB6CB1F9251B19A42A1F67F /* SyncGlucoseIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
 		93E0EEFD3079E9FF7F3E3303 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,7 @@
 				AD20CB6D9ECD8580A75AC516 /* HealthBridgeApp.swift */,
 				C906A15FBB198A03265ABBD0 /* Info.plist */,
 				B08A597936B2F0A563EB783D /* Background */,
+				85C7EE1534EE7263D091AC2D /* Intents */,
 				4A58DD46E9B38FAD7DC0E462 /* Models */,
 				93E0EEFD3079E9FF7F3E3303 /* Resources */,
 				7B4780125A266B312A6E3815 /* Views */,
@@ -211,6 +222,7 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					76E497C4EA2FDA64EEB0C989 = {
+						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -271,6 +283,7 @@
 				85E078536462338108A36D87 /* LibreLinkUpModels.swift in Sources */,
 				6A9B18B5CFFA19A913F8280F /* LibreLinkUpService.swift in Sources */,
 				E0CAC0BC7BDC7FA62A9DAE45 /* SensorRegistry.swift in Sources */,
+				837A2C530CD2B3044A50D376 /* SyncGlucoseIntent.swift in Sources */,
 				2A60A7C2EA1980D018386FF2 /* SyncManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +318,7 @@
 				CODE_SIGN_ENTITLEMENTS = HealthBridge/HealthBridge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A22UWTG6TN;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HealthBridge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -485,7 +498,7 @@
 				CODE_SIGN_ENTITLEMENTS = HealthBridge/HealthBridge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A22UWTG6TN;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = HealthBridge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

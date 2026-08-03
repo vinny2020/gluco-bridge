@@ -55,6 +55,7 @@ targets:
         NSHealthUpdateUsageDescription: "HealthBridge writes your Libre glucose readings to Apple Health."
         BGTaskSchedulerPermittedIdentifiers:
           - com.xaymaca.healthbridge.sync
+          - com.xaymaca.healthbridge.backfill
         UIBackgroundModes:
           - fetch
           - processing

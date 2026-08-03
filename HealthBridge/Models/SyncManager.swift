@@ -13,6 +13,7 @@ class SyncManager: ObservableObject {
     private let lluService: LibreLinkUpService
     private let healthKit: HealthKitManager
     private let totalSyncedKey = "healthbridge.totalSynced"
+    private let lastSyncDateKey = "healthbridge.lastSyncDate"
 
     init(lluService: LibreLinkUpService = LibreLinkUpService(
             region: KeychainHelper.load(key: "llu.region"),
@@ -22,6 +23,10 @@ class SyncManager: ObservableObject {
         self.lluService = lluService
         self.healthKit = healthKit
         self.totalSynced = UserDefaults.standard.integer(forKey: totalSyncedKey)
+        // Persisted so the foreground debounce and the App Intent (which run in
+        // fresh SyncManager instances) see syncs done by other triggers.
+        let lastSync = UserDefaults.standard.double(forKey: lastSyncDateKey)
+        self.lastSyncDate = lastSync > 0 ? Date(timeIntervalSince1970: lastSync) : nil
     }
 
     // MARK: - Incremental sync
@@ -46,6 +51,7 @@ class SyncManager: ObservableObject {
             lastSyncCount = written
             totalSynced += written
             UserDefaults.standard.set(totalSynced, forKey: totalSyncedKey)
+            UserDefaults.standard.set(lastSyncDate!.timeIntervalSince1970, forKey: lastSyncDateKey)
         } catch {
             syncError = error.localizedDescription
         }
@@ -74,6 +80,7 @@ class SyncManager: ObservableObject {
             lastSyncCount = written
             totalSynced += written
             UserDefaults.standard.set(totalSynced, forKey: totalSyncedKey)
+            UserDefaults.standard.set(lastSyncDate!.timeIntervalSince1970, forKey: lastSyncDateKey)
         } catch {
             syncError = error.localizedDescription
         }
@@ -82,13 +89,16 @@ class SyncManager: ObservableObject {
     // MARK: - Debounced sync (foreground / automation triggers)
 
     /// Runs a sync only if the last successful sync is older than `maxAge`.
-    /// Used by scenePhase foreground triggers (and later, the App Intent) so
+    /// Used by scenePhase foreground triggers and the Sync Glucose App Intent so
     /// repeated app opens / stacked Shortcuts automations don't hammer LLU.
-    func syncIfStale(maxAge: TimeInterval = 300) async {
+    /// Returns false when the sync was skipped because data is still fresh.
+    @discardableResult
+    func syncIfStale(maxAge: TimeInterval = 300) async -> Bool {
         if let last = lastSyncDate, Date().timeIntervalSince(last) < maxAge {
-            return
+            return false
         }
         await sync()
+        return true
     }
 
     // MARK: - Token management
@@ -136,5 +146,6 @@ class SyncManager: ObservableObject {
         syncError = nil
         totalSynced = 0
         UserDefaults.standard.removeObject(forKey: totalSyncedKey)
+        UserDefaults.standard.removeObject(forKey: lastSyncDateKey)
     }
 }

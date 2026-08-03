@@ -11,7 +11,7 @@ A personal sideload iOS app that bridges **FreeStyle Libre 3 Plus** glucose sens
 - Authenticates with the LibreLinkUp (LLU) API using your existing LibreLink credentials
 - Fetches blood glucose readings from your FreeStyle Libre 3 Plus sensor
 - Writes readings to Apple Health as `HKQuantityTypeIdentifierBloodGlucose` samples
-- Runs in the background via `BGAppRefreshTask` to keep Health data current
+- Keeps Health data current via layered sync triggers: sync on app open, opportunistic `BGAppRefreshTask`, a **Sync Glucose** Shortcuts action for automations, and a nightly full-history backfill while charging
 - Displays sync status, total readings synced, and sensor info in a clean SwiftUI interface
 
 ---
@@ -91,6 +91,40 @@ GlucoBridge/
 └── Resources/
     └── sensors.json                # Supported sensor definitions
 ```
+
+---
+
+## Background Sync — How It Works and What to Expect
+
+LibreLinkUp is a poll-only API, so the app has to wake up to pull readings. iOS makes no guarantees about when (or whether) background tasks run — especially on a locked phone — so GlucoBridge layers several independent triggers. Any single successful sync backfills ~14 days from the LLU graph endpoint, so gaps self-heal. All of this works on a free Apple ID.
+
+| Layer | Trigger | Reliability |
+|---|---|---|
+| Open the app | `scenePhase` foreground sync (debounced to 5 min) | Guaranteed — opening the app *is* the sync |
+| Sync Now button | Manual | Guaranteed |
+| Shortcuts automation | **Sync Glucose** App Intent | Very good — see setup below |
+| `BGAppRefreshTask` | iOS opportunistic refresh (~15 min hint) | Best-effort; at Apple's discretion |
+| Nightly backfill | `BGProcessingTask`, runs while charging | Good overnight; heals missed days |
+
+The **Background sync** row in the app shows real scheduler state: green **Active** (a background task is queued and a sync landed within the last hour), yellow **Scheduled** (queued but no recent sync), or red **Not scheduled**.
+
+### Recommended: Shortcuts automation (the big reliability win)
+
+`BGAppRefreshTask` alone will disappoint you — iOS budgets it aggressively. The fix is to piggyback on apps you already open, using the **Sync Glucose** action, which syncs in the background without opening GlucoBridge:
+
+1. Open **Shortcuts** → **Automation** tab → **+** (New Automation)
+2. Choose **App** → select an app you open many times a day (Messages, Instagram, your mail app…) → **Is Opened**
+3. Select **Run Immediately** and turn **Notify When Run** off
+4. **Next** → **New Blank Automation** → **Add Action** → search **Sync Glucose**
+5. Done. Every time you open that app, glucose syncs silently in the background.
+
+Time-of-day automations (e.g. 8 AM / 1 PM / 6 PM / 10 PM) also work, but iOS only honors them reliably when the phone is unlocked or shortly after — the app-open trigger is the dependable one, because the phone is guaranteed awake at that moment.
+
+### Realistic expectations
+
+- With just the app installed and never opened: expect sparse, irregular syncs (whatever iOS grants `BGAppRefreshTask`, plus the nightly charge-time backfill).
+- With one app-open automation on a daily-driver app: near-continuous coverage in practice.
+- Every sync pulls the full ~14-day graph, so even a phone left in a drawer for a week catches up completely on the next sync.
 
 ---
 

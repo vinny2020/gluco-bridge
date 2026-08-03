@@ -15,6 +15,7 @@ struct HealthBridgeApp: App {
         // request (scheduleNextSync was only called from inside the handler).
         // Submit one at launch, and again whenever we go to background below.
         BackgroundTaskManager.scheduleNextSync()
+        BackgroundTaskManager.scheduleNightlyBackfill()
     }
 
     var body: some Scene {
@@ -39,6 +40,7 @@ struct HealthBridgeApp: App {
             case .background:
                 // Apple's recommended point to submit the next BG refresh request.
                 BackgroundTaskManager.scheduleNextSync()
+                BackgroundTaskManager.scheduleNightlyBackfill()
             default:
                 break
             }

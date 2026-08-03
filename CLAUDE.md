@@ -473,7 +473,9 @@ All tests must pass in Simulator before building to physical device.
 
 The data path is end-to-end working on simulator and a real iPhone — Libre 3 Plus glucose is flowing into Apple Health. **However (2026-08-03 discovery): every sync so far has been manually triggered.** Background sync never runs — see item 0 / GitHub Issue #1. The remaining items are non-blocking polish.
 
-### 0. Layered sync triggers ⭐⭐ (GitHub Issue #1 — new top priority)
+### 0. Layered sync triggers — ALL LAYERS IMPLEMENTED 2026-08-03 (GitHub Issue #1)
+
+**Status:** Layers 1–2 landed in commit 91d0b40; layers 3–4, honest indicator, and README docs landed 2026-08-03. All 18 unit tests pass in simulator. Still pending: on-device verification (BG task firing overnight, Shortcuts automation end-to-end) and closing Issue #1. Implementation notes: `SyncGlucoseIntent` + `AppShortcutsProvider` in `HealthBridge/Intents/`; backfill task `com.xaymaca.healthbridge.backfill` (BGProcessingTask, requires power + network, earliest next 2 AM); `lastSyncDate` now persisted in UserDefaults (`healthbridge.lastSyncDate`) so the debounce and indicator work across process launches; both BG handlers share a `TaskCompletionGuard` so the expiration handler and sync task can't double-complete — the auto-retry work (item 1) can rely on that.
 
 **Discovery:** `scheduleNextSync()` is only called from inside `handleSyncTask()` — nothing ever submits the FIRST `BGAppRefreshTaskRequest`, so the handler never fires and background sync has been dead since the first commit. The "Background sync: Active" indicator in ContentView is hardcoded. There is also no launch/foreground sync — `ContentView.onAppear` only refreshes HealthKit auth. The manual Sync Now button is currently the only trigger in the app.
 

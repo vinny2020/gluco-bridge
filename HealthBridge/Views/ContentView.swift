@@ -7,6 +7,9 @@ struct ContentView: View {
     @EnvironmentObject private var syncManager: SyncManager
     @EnvironmentObject private var healthKit: HealthKitManager
 
+    /// nil while the BGTaskScheduler query is in flight.
+    @State private var backgroundSyncScheduled: Bool?
+
     private var patientName: String {
         guard let id = KeychainHelper.load(key: "llu.patientId") else { return "Unknown" }
         return id  // We show the patient name stored separately if available
@@ -88,9 +91,9 @@ struct ContentView: View {
                         Text("Background sync")
                         Spacer()
                         Circle()
-                            .fill(Color.green)
+                            .fill(backgroundSyncStatus.color)
                             .frame(width: 10, height: 10)
-                        Text("Active")
+                        Text(backgroundSyncStatus.label)
                             .foregroundStyle(.secondary)
                             .font(.subheadline)
                     }
@@ -132,7 +135,31 @@ struct ContentView: View {
             .onAppear {
                 healthKit.refreshAuthorizationStatus()
             }
+            .task {
+                backgroundSyncScheduled = await BackgroundTaskManager.hasPendingSyncRequest()
+            }
+            .onChange(of: syncManager.lastSyncDate) { _, _ in
+                Task {
+                    backgroundSyncScheduled = await BackgroundTaskManager.hasPendingSyncRequest()
+                }
+            }
         }
+    }
+
+    /// Real scheduler state instead of the old hardcoded "Active":
+    /// green only when a BG request is pending AND a sync landed recently.
+    private var backgroundSyncStatus: (color: Color, label: String) {
+        guard let scheduled = backgroundSyncScheduled else {
+            return (.gray, "Checking…")
+        }
+        if !scheduled {
+            return (.red, "Not scheduled")
+        }
+        if let last = syncManager.lastSyncDate,
+           Date().timeIntervalSince(last) < 3600 {
+            return (.green, "Active")
+        }
+        return (.yellow, "Scheduled")
     }
 
     private var storedPatientName: String {
