@@ -10,8 +10,8 @@ struct LibreLinkUpModelsTests {
     @Test func loginResponseDecoding() throws {
         let data = Fixture.load("login_success")
         let decoded = try JSONDecoder().decode(LLULoginResponse.self, from: data)
-        #expect(decoded.data?.authTicket.token == "test-token-abc123")
-        #expect(decoded.data?.authTicket.expires == 9999999999)
+        #expect(decoded.data?.authTicket?.token == "test-token-abc123")
+        #expect(decoded.data?.authTicket?.expires == 9999999999)
     }
 
     @Test func glucoseDecoding() throws {

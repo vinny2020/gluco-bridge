@@ -79,6 +79,18 @@ class SyncManager: ObservableObject {
         }
     }
 
+    // MARK: - Debounced sync (foreground / automation triggers)
+
+    /// Runs a sync only if the last successful sync is older than `maxAge`.
+    /// Used by scenePhase foreground triggers (and later, the App Intent) so
+    /// repeated app opens / stacked Shortcuts automations don't hammer LLU.
+    func syncIfStale(maxAge: TimeInterval = 300) async {
+        if let last = lastSyncDate, Date().timeIntervalSince(last) < maxAge {
+            return
+        }
+        await sync()
+    }
+
     // MARK: - Token management
 
     private func validToken() async throws -> String {
