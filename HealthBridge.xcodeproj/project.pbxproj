@@ -23,6 +23,7 @@
 		9983AD0D53CD238E62B0D622 /* LibreLinkUpModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A7C3671F5A2EA1BABC3BD /* LibreLinkUpModelsTests.swift */; };
 		9BDF446C96281FFC0DF8A950 /* HealthBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20CB6D9ECD8580A75AC516 /* HealthBridgeApp.swift */; };
 		CB49E37D536508A964A1D01C /* login_failure.json in Resources */ = {isa = PBXBuildFile; fileRef = 555F46E5F0E8AB71AB4A9503 /* login_failure.json */; };
+		D37DD05FABEF863CBA50013A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DFBD63A484DA3F649D6B0E6 /* Assets.xcassets */; };
 		D423D1A1EBC4CB7E58385CA2 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACCD1EDE3ED7538CEA8E2E /* KeychainHelper.swift */; };
 		DEA75FCE3A4C2352372D6299 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5162A8C0D97B941C91992F /* ConnectView.swift */; };
 		E0CAC0BC7BDC7FA62A9DAE45 /* SensorRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EA11280A120C67AB4B97A4 /* SensorRegistry.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		02AC71CF4B748F47B17F6C14 /* HealthBridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthBridge.entitlements; sourceTree = "<group>"; };
 		0403DFDEDDF16303744CE3F8 /* LibreLinkUpServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreLinkUpServiceTests.swift; sourceTree = "<group>"; };
+		0DFBD63A484DA3F649D6B0E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31A759280715F6FBBAB133C7 /* HealthBridge.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HealthBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CACCD1EDE3ED7538CEA8E2E /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		42C7967B77CD3CD676D07F8A /* HealthBridgeTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = HealthBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,7 @@
 		C37769715314274CEBE70E11 /* HealthBridge */ = {
 			isa = PBXGroup;
 			children = (
+				0DFBD63A484DA3F649D6B0E6 /* Assets.xcassets */,
 				02AC71CF4B748F47B17F6C14 /* HealthBridge.entitlements */,
 				AD20CB6D9ECD8580A75AC516 /* HealthBridgeApp.swift */,
 				C906A15FBB198A03265ABBD0 /* Info.plist */,
@@ -252,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37DD05FABEF863CBA50013A /* Assets.xcassets in Resources */,
 				0A2102C2566B9ACA24D2238A /* sensors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
