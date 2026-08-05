@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="design/GlucoBridge-AppIcon.svg" alt="GlucoBridge app icon" width="128" />
+</p>
+
 # GlucoBridge
 
-A personal sideload iOS app that bridges **FreeStyle Libre 3 Plus** glucose sensor data from the [LibreLinkUp](https://www.librelinkup.com/) cloud API into **Apple Health** via `BGAppRefreshTask`.
+A personal sideload iOS app that bridges **FreeStyle Libre 3 Plus** glucose sensor data from the [LibreLinkUp](https://www.librelinkup.com/) cloud API into **Apple Health**, kept current by layered sync triggers — foreground sync, background refresh, a Shortcuts-automatable App Intent, and a nightly charge-time backfill.
 
 > ⚠️ **Disclaimer:** This project is unofficial and not affiliated with, endorsed by, or supported by Abbott Laboratories or any of its subsidiaries. Use of the LibreLinkUp API is unofficial, undocumented, and subject to Abbott's Terms of Service. Use this software at your own risk.
 
@@ -73,21 +77,23 @@ xcodegen generate
 ## Architecture
 
 ```
-GlucoBridge/
-├── App/
-│   └── HealthBridgeApp.swift       # App entry point, BGAppRefreshTask registration
+HealthBridge/
+├── HealthBridgeApp.swift           # Entry point, scenePhase sync triggers, BG task scheduling
 ├── Views/
-│   ├── ContentView.swift           # Main UI, sync status display
+│   ├── ContentView.swift           # Main UI, sync + background-task status display
 │   └── ConnectView.swift           # LLU login and sensor selection
-├── Services/
-│   ├── LLUService.swift            # LibreLinkUp API client
-│   ├── SyncManager.swift           # Orchestrates fetch → HealthKit write
-│   └── HealthKitManager.swift      # Apple Health read/write
 ├── Models/
-│   ├── GlucoseReading.swift
-│   └── LLUModels.swift
-├── Helpers/
-│   └── KeychainHelper.swift        # Secure credential storage
+│   ├── LibreLinkUpService.swift    # LibreLinkUp API client
+│   ├── LibreLinkUpModels.swift     # Codable API response models
+│   ├── SyncManager.swift           # Orchestrates fetch → HealthKit write, debounce
+│   ├── HealthKitManager.swift      # Apple Health authorization + writes
+│   ├── KeychainHelper.swift        # Secure credential storage
+│   └── SensorRegistry.swift        # Data-driven sensor definitions
+├── Intents/
+│   └── SyncGlucoseIntent.swift     # "Sync Glucose" App Intent for Shortcuts automations
+├── Background/
+│   └── BackgroundTaskManager.swift # BGAppRefreshTask + nightly BGProcessingTask backfill
+├── Assets.xcassets                 # App icon
 └── Resources/
     └── sensors.json                # Supported sensor definitions
 ```
